@@ -28,6 +28,7 @@ import java.util.stream.Collectors;
 public class UIpunto extends javax.swing.JFrame {
 
     LinkedList<Punto2D> listaPuntos = new LinkedList<>();
+    LinkedList<Punto2D> listaAux = new LinkedList<>();
 
     /**
      * Creates new form UIpunto
@@ -151,7 +152,12 @@ public class UIpunto extends javax.swing.JFrame {
         });
         OrderDesc.add(OrderX);
 
-        jMenuItem3.setText("jMenuItem3");
+        jMenuItem3.setText("Concatenar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         OrderDesc.add(jMenuItem3);
 
         jMenuBar1.add(OrderDesc);
@@ -256,7 +262,7 @@ public class UIpunto extends javax.swing.JFrame {
 
     private void jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActionPerformed
         Collections.reverse(listaPuntos);
-        
+
         TextAreacoordenada.setText(mostrarC(listaPuntos));
         System.out.println(listaPuntos);
     }//GEN-LAST:event_jMenuItemActionPerformed
@@ -271,6 +277,14 @@ public class UIpunto extends javax.swing.JFrame {
         TextAreacoordenada.setText(mostrarC(listaPuntos));
         System.out.println(listaPuntos);
     }//GEN-LAST:event_OrderXActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+
+        LinkedList<Punto2D> nuevaList = new LinkedList<>();
+        listaPuntos.addAll(listaAux);
+        nuevaList = listaPuntos;
+        System.out.println(listaPuntos);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     public String mostrarC(LinkedList<Punto2D> l) {
         String mostrar1 = "";
