@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 /**
  *
- * @author santiago.londono_men
+ * @author Fabian Esteban Lopez
  */
 public class UIpunto extends javax.swing.JFrame {
 
