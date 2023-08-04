@@ -16,22 +16,23 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import modelo.Punto2D;
 import modelo.Utilidades;
+import java.util.Collections;
+
 /**
  *
  * @author santiago.londono_men
  */
-public class UIpunto extends javax.swing.JFrame  {
+public class UIpunto extends javax.swing.JFrame {
 
     LinkedList<Punto2D> listaPuntos = new LinkedList<>();
-   
 
     /**
      * Creates new form UIpunto
      */
-   public UIpunto() {
-    initComponents();
-    
-}
+    public UIpunto() {
+        initComponents();
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,8 +57,8 @@ public class UIpunto extends javax.swing.JFrame  {
         Salir = new javax.swing.JButton();
         mostrar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        OrderDesc = new javax.swing.JMenu();
+        jMenuItem = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -129,23 +130,28 @@ public class UIpunto extends javax.swing.JFrame  {
             }
         });
 
-        jMenu1.setText("File");
+        OrderDesc.setText("File");
 
-        jMenuItem1.setText("Invest List");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem.setText("Invest List");
+        jMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        OrderDesc.add(jMenuItem);
 
-        jMenuItem2.setText("jMenuItem2");
-        jMenu1.add(jMenuItem2);
+        jMenuItem2.setText("OrderDesc");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        OrderDesc.add(jMenuItem2);
 
         jMenuItem3.setText("jMenuItem3");
-        jMenu1.add(jMenuItem3);
+        OrderDesc.add(jMenuItem3);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(OrderDesc);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -205,19 +211,19 @@ public class UIpunto extends javax.swing.JFrame  {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   
-        // El código generado por el editor visual de NetBeans aquí...
-        // ...
+
+    // El código generado por el editor visual de NetBeans aquí...
+    // ...
     private void variablexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_variablexActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_variablexActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-        
-        boolean t=Utilidades.escribirCoordenadas(listaPuntos, "CoordenadasPuntos.txt");
-        if(t){
+
+        boolean t = Utilidades.escribirCoordenadas(listaPuntos, "CoordenadasPuntos.txt");
+        if (t) {
             JOptionPane.showMessageDialog(rootPane, "Si se guardo el archivo");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "No se guardo el archivo");
         }
     }//GEN-LAST:event_GuardarActionPerformed
@@ -230,35 +236,41 @@ public class UIpunto extends javax.swing.JFrame  {
 
     private void panelcoordenadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelcoordenadaMouseClicked
         // TODO add your handling code here:
-        double coorX=evt.getX();
-        double coorY=evt.getY();
-        Punto2D objP=new Punto2D(coorX, coorY);
+        double coorX = evt.getX();
+        double coorY = evt.getY();
+        Punto2D objP = new Punto2D(coorX, coorY);
         listaPuntos.add(objP);
-                
+
     }//GEN-LAST:event_panelcoordenadaMouseClicked
 
     private void mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarActionPerformed
         // TODO add your handling code here:
-        
+
         TextAreacoordenada.setText(mostrarC(listaPuntos));
-        
-        
+
+
     }//GEN-LAST:event_mostrarActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActionPerformed
+        Collections.reverse(listaPuntos);
+        System.out.println(listaPuntos);
+    }//GEN-LAST:event_jMenuItemActionPerformed
 
-    public String mostrarC(LinkedList<Punto2D> l){
-        String mostrar1="";
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    
+
+    public String mostrarC(LinkedList<Punto2D> l) {
+        String mostrar1 = "";
         for (int i = 0; i < l.size(); i++) {
             Punto2D get = l.get(i);
-            mostrar1+=get.toString()+"\n";
+            mostrar1 += get.toString() + "\n";
         }
-        
-        
+
         return mostrar1;
     }
+
     /**
      * @param args the command line arguments
      */
@@ -272,15 +284,15 @@ public class UIpunto extends javax.swing.JFrame  {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Guardar;
+    private javax.swing.JMenu OrderDesc;
     private javax.swing.JButton Salir;
     private javax.swing.JTextArea TextAreacoordenada;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -292,6 +304,4 @@ public class UIpunto extends javax.swing.JFrame  {
     private javax.swing.JTextField variabley;
     // End of variables declaration//GEN-END:variables
 
-   
 }
-
