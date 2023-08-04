@@ -17,6 +17,9 @@ import javax.swing.JOptionPane;
 import modelo.Punto2D;
 import modelo.Utilidades;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -59,7 +62,7 @@ public class UIpunto extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         OrderDesc = new javax.swing.JMenu();
         jMenuItem = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        OrderX = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -140,13 +143,13 @@ public class UIpunto extends javax.swing.JFrame {
         });
         OrderDesc.add(jMenuItem);
 
-        jMenuItem2.setText("OrderDesc");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        OrderX.setText("OrderX");
+        OrderX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                OrderXActionPerformed(evt);
             }
         });
-        OrderDesc.add(jMenuItem2);
+        OrderDesc.add(OrderX);
 
         jMenuItem3.setText("jMenuItem3");
         OrderDesc.add(jMenuItem3);
@@ -256,10 +259,14 @@ public class UIpunto extends javax.swing.JFrame {
         System.out.println(listaPuntos);
     }//GEN-LAST:event_jMenuItemActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void OrderXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderXActionPerformed
+        LinkedList<Punto2D> auxOrdenarX = new LinkedList<>();
         
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-    
+        List<Punto2D> listaOrdenada = listaPuntos.stream().sorted(Comparator.comparing(Punto2D::getX)).collect(Collectors.toList());;
+        auxOrdenarX.addAll(listaOrdenada);
+        
+        System.out.println(auxOrdenarX);
+    }//GEN-LAST:event_OrderXActionPerformed
 
     public String mostrarC(LinkedList<Punto2D> l) {
         String mostrar1 = "";
@@ -285,6 +292,7 @@ public class UIpunto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Guardar;
     private javax.swing.JMenu OrderDesc;
+    private javax.swing.JMenuItem OrderX;
     private javax.swing.JButton Salir;
     private javax.swing.JTextArea TextAreacoordenada;
     private javax.swing.JLabel jLabel1;
@@ -293,7 +301,6 @@ public class UIpunto extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
