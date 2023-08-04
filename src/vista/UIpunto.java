@@ -256,16 +256,20 @@ public class UIpunto extends javax.swing.JFrame {
 
     private void jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActionPerformed
         Collections.reverse(listaPuntos);
+        
+        TextAreacoordenada.setText(mostrarC(listaPuntos));
         System.out.println(listaPuntos);
     }//GEN-LAST:event_jMenuItemActionPerformed
 
     private void OrderXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderXActionPerformed
         LinkedList<Punto2D> auxOrdenarX = new LinkedList<>();
-        
+
         List<Punto2D> listaOrdenada = listaPuntos.stream().sorted(Comparator.comparing(Punto2D::getX)).collect(Collectors.toList());;
         auxOrdenarX.addAll(listaOrdenada);
-        
-        System.out.println(auxOrdenarX);
+        listaPuntos = auxOrdenarX;
+
+        TextAreacoordenada.setText(mostrarC(listaPuntos));
+        System.out.println(listaPuntos);
     }//GEN-LAST:event_OrderXActionPerformed
 
     public String mostrarC(LinkedList<Punto2D> l) {
