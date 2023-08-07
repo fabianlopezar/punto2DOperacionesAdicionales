@@ -58,8 +58,11 @@ public class UIpunto extends javax.swing.JFrame {
         TextAreacoordenada = new javax.swing.JTextArea();
         panelcoordenada = new javax.swing.JPanel();
         Guardar = new javax.swing.JButton();
-        Salir = new javax.swing.JButton();
+        searchPointButton = new javax.swing.JButton();
         mostrar = new javax.swing.JButton();
+        Salir1 = new javax.swing.JButton();
+        ySearch = new javax.swing.JTextField();
+        xSearch = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         OrderDesc = new javax.swing.JMenu();
         jMenuItem = new javax.swing.JMenuItem();
@@ -120,10 +123,10 @@ public class UIpunto extends javax.swing.JFrame {
             }
         });
 
-        Salir.setText("Salir");
-        Salir.addActionListener(new java.awt.event.ActionListener() {
+        searchPointButton.setText("Search");
+        searchPointButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirActionPerformed(evt);
+                searchPointButtonActionPerformed(evt);
             }
         });
 
@@ -131,6 +134,25 @@ public class UIpunto extends javax.swing.JFrame {
         mostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarActionPerformed(evt);
+            }
+        });
+
+        Salir1.setText("Salir");
+        Salir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Salir1ActionPerformed(evt);
+            }
+        });
+
+        ySearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ySearchActionPerformed(evt);
+            }
+        });
+
+        xSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xSearchActionPerformed(evt);
             }
         });
 
@@ -176,9 +198,9 @@ public class UIpunto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Salir)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Salir1)
+                        .addGap(12, 12, 12)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(variablex, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,9 +214,19 @@ public class UIpunto extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelcoordenada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(panelcoordenada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(searchPointButton)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(xSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(ySearch, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -205,16 +237,22 @@ public class UIpunto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Salir)
-                    .addComponent(Guardar)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(variablex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(variabley, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mostrar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Guardar)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(variablex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(variabley, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mostrar)
+                            .addComponent(Salir1)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(searchPointButton)
+                        .addComponent(ySearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(xSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
         );
 
@@ -237,11 +275,30 @@ public class UIpunto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_GuardarActionPerformed
 
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        System.exit(0);
+    private void searchPointButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPointButtonActionPerformed
+        double xvalor = Double.parseDouble(xSearch.getText());
+        double yvalor = Double.parseDouble(ySearch.getText());
 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SalirActionPerformed
+        searchPoint(xvalor, yvalor);
+
+    }//GEN-LAST:event_searchPointButtonActionPerformed
+    private String searchPoint(double x, double y) {
+        String punto = "";
+        int i = -1;
+        for (Punto2D elem : listaPuntos) {
+            i++;
+            if (elem.getX() == x && elem.getY() == y) {
+
+                punto = String.valueOf(i);
+                System.out.println("se encuentra en la posicion: " + i);
+            }
+        }
+        if (punto.length() == 0) {
+            punto = "No se encuentra en la lista";
+            System.out.println("No se encuentra en la lista");
+        }
+        return punto;
+    }
 
     private void panelcoordenadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelcoordenadaMouseClicked
         // TODO add your handling code here:
@@ -251,6 +308,12 @@ public class UIpunto extends javax.swing.JFrame {
         listaPuntos.add(objP);
 
     }//GEN-LAST:event_panelcoordenadaMouseClicked
+    public void agregarPunto2D() {
+        double coorX = 5.5;
+        double coorY = 7.7;
+        Punto2D objP = new Punto2D(coorX, coorY);
+        listaAux.add(objP);
+    }
 
     private void mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarActionPerformed
         // TODO add your handling code here:
@@ -281,10 +344,25 @@ public class UIpunto extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 
         LinkedList<Punto2D> nuevaList = new LinkedList<>();
+        agregarPunto2D();
+
         listaPuntos.addAll(listaAux);
+
         nuevaList = listaPuntos;
         System.out.println(listaPuntos);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void Salir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salir1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Salir1ActionPerformed
+
+    private void ySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ySearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ySearchActionPerformed
+
+    private void xSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_xSearchActionPerformed
 
     public String mostrarC(LinkedList<Punto2D> l) {
         String mostrar1 = "";
@@ -311,7 +389,7 @@ public class UIpunto extends javax.swing.JFrame {
     private javax.swing.JButton Guardar;
     private javax.swing.JMenu OrderDesc;
     private javax.swing.JMenuItem OrderX;
-    private javax.swing.JButton Salir;
+    private javax.swing.JButton Salir1;
     private javax.swing.JTextArea TextAreacoordenada;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -325,8 +403,11 @@ public class UIpunto extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton mostrar;
     private javax.swing.JPanel panelcoordenada;
+    private javax.swing.JButton searchPointButton;
     private javax.swing.JTextField variablex;
     private javax.swing.JTextField variabley;
+    private javax.swing.JTextField xSearch;
+    private javax.swing.JTextField ySearch;
     // End of variables declaration//GEN-END:variables
 
 }
